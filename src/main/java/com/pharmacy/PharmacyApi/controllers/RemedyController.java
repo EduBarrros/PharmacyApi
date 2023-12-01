@@ -10,19 +10,20 @@ import com.pharmacy.PharmacyApi.remedy.Remedy;
 import com.pharmacy.PharmacyApi.remedy.RemedyRegisterData;
 import com.pharmacy.PharmacyApi.remedy.RemedyRepository;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/remedy")
 public class RemedyController {
-	
+
 	@Autowired
-	private RemedyRepository repository; 
-	
-	
+	private RemedyRepository repository;
+
 	@PostMapping
-	public void createRemedy(@RequestBody RemedyRegisterData data) {
-		
+	public void createRemedy(@RequestBody @Valid RemedyRegisterData data) {
+
 		repository.save(new Remedy(data));
-		
+
 	}
-	
+
 }

@@ -1,5 +1,7 @@
 package com.pharmacy.PharmacyApi.remedy;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -22,7 +24,7 @@ import lombok.Setter;
 @EqualsAndHashCode(of = "id")
 @SuppressWarnings("unused")
 public class Remedy {
-	
+
 	public Remedy(RemedyRegisterData data) {
 		this.nome = data.nome();
 		this.via = data.via();
@@ -32,20 +34,21 @@ public class Remedy {
 		this.laboratorio = data.laboratorio();
 	}
 
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String nome;
-	
+
 	@Enumerated(EnumType.STRING)
 	private Via via;
-	
+
 	private String lote;
-	
+
 	private int quantidade;
-	
-	private String validade;
-	
+
+	private LocalDate validade;
+
 	@Enumerated(EnumType.STRING)
 	private Laboratorio laboratorio;
 }
