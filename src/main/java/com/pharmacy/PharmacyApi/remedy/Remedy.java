@@ -22,7 +22,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
-@SuppressWarnings("unused")
 public class Remedy {
 
 	public Remedy(RemedyRegisterData data) {
