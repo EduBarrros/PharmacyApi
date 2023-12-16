@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -50,4 +51,26 @@ public class Remedy {
 
 	@Enumerated(EnumType.STRING)
 	private Laboratorio laboratorio;
+
+	public void updateRemedy(@Valid RemedyUpdateData data) {
+		if (data.nome() != null) {
+			this.nome = data.nome();
+		}
+
+		if (data.via() != null) {
+			this.via = data.via();
+		}
+
+		if (data.lote() != null) {
+			this.lote = data.lote();
+		}
+
+		if (data.laboratorio() != null) {
+			this.laboratorio = data.laboratorio();
+		}
+
+		if (data.validade() != null) {
+			this.validade = data.validade();
+		}
+	}
 }
