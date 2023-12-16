@@ -3,6 +3,7 @@ package com.pharmacy.PharmacyApi.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,8 +12,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import com.pharmacy.PharmacyApi.remedy.Remedy;
+import com.pharmacy.PharmacyApi.remedy.RemedyDetails;
 import com.pharmacy.PharmacyApi.remedy.RemedyListData;
 import com.pharmacy.PharmacyApi.remedy.RemedyRegisterData;
 import com.pharmacy.PharmacyApi.remedy.RemedyRepository;
@@ -30,40 +33,56 @@ public class RemedyController {
 
 	@PostMapping
 	@Transactional
-	public void createRemedy(@RequestBody @Valid RemedyRegisterData data) {
-		repository.save(new Remedy(data));
+	public ResponseEntity<RemedyDetails> createRemedy(@RequestBody @Valid RemedyRegisterData data, UriComponentsBuilder uriBuilder) {
+		var remedy = new Remedy(data);
+		
+		repository.save(remedy);
+		
+		var uri = uriBuilder.path("/remedy/{id}").buildAndExpand(remedy.getId()).toUri();
+		
+		return ResponseEntity.created(uri).body(new RemedyDetails(remedy));
 	}
 
 	@GetMapping
-	public List<RemedyListData> listRemedy() {
-		return repository.findAllByAtivoTrue().stream().map(RemedyListData::new).toList();
+	public ResponseEntity<List<RemedyListData>> listRemedy() {
+		var list = repository.findAllByAtivoTrue().stream().map(RemedyListData::new).toList();
+		
+		return ResponseEntity.ok(list);
 	}
 
 	@PutMapping
 	@Transactional
-	public void updateRemedy(@RequestBody @Valid RemedyUpdateData data) {
+	public ResponseEntity<RemedyDetails> updateRemedy(@RequestBody @Valid RemedyUpdateData data) {
 		var remedy = repository.getReferenceById(data.id());
 		remedy.updateRemedy(data);
+		
+		return ResponseEntity.ok(new RemedyDetails(remedy));
 	}
 	
 	@PutMapping("/enable/{id}")
 	@Transactional
-	public void enableRemedy(@PathVariable Long id) {
+	public ResponseEntity<String> enableRemedy(@PathVariable Long id) {
 		var remedy = repository.getReferenceById(id);
 		remedy.ativar();
+		
+		return ResponseEntity.ok("Remédio ativado com sucesso!");
 	}
 	
 	@DeleteMapping("/{id}")
 	@Transactional
-	public void deleteRemedy(@PathVariable Long id){
+	public ResponseEntity<Void> deleteRemedy(@PathVariable Long id){
 		repository.deleteById(id);
+		
+		return ResponseEntity.noContent().build();
 	}
 	
 	@DeleteMapping("/disable/{id}")
 	@Transactional
-	public void disableRemedy(@PathVariable Long id){
+	public ResponseEntity<Void> disableRemedy(@PathVariable Long id){
 		var remedy = repository.getReferenceById(id);
 		remedy.inativar();
+		
+		return ResponseEntity.noContent().build();
 	}
 	
 }
