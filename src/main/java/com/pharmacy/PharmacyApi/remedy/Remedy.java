@@ -52,7 +52,7 @@ public class Remedy {
 
 	@Enumerated(EnumType.STRING)
 	private Laboratorio laboratorio;
-	
+
 	private Boolean ativo;
 
 	public void updateRemedy(@Valid RemedyUpdateData data) {
@@ -75,14 +75,14 @@ public class Remedy {
 		if (data.validade() != null) {
 			this.validade = data.validade();
 		}
-		
-		if (data.ativo() != null) {
-			this.ativo = data.ativo();
-		}
+
 	}
 
 	public void inativar() {
 		this.ativo = false;
-		
+	}
+
+	public void ativar() {
+		this.ativo = true;
 	}
 }

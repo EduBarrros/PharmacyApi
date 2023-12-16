@@ -46,6 +46,13 @@ public class RemedyController {
 		remedy.updateRemedy(data);
 	}
 	
+	@PutMapping("/enable/{id}")
+	@Transactional
+	public void enableRemedy(@PathVariable Long id) {
+		var remedy = repository.getReferenceById(id);
+		remedy.ativar();
+	}
+	
 	@DeleteMapping("/{id}")
 	@Transactional
 	public void deleteRemedy(@PathVariable Long id){
@@ -54,7 +61,7 @@ public class RemedyController {
 	
 	@DeleteMapping("/disable/{id}")
 	@Transactional
-	public void logicDeleteRemedy(@PathVariable Long id){
+	public void disableRemedy(@PathVariable Long id){
 		var remedy = repository.getReferenceById(id);
 		remedy.inativar();
 	}
