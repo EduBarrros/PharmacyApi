@@ -32,6 +32,7 @@ public class Remedy {
 		this.quantidade = data.quantidade();
 		this.validade = data.validade();
 		this.laboratorio = data.laboratorio();
+		this.ativo = true;
 	}
 
 	@Id
@@ -51,6 +52,8 @@ public class Remedy {
 
 	@Enumerated(EnumType.STRING)
 	private Laboratorio laboratorio;
+	
+	private Boolean ativo;
 
 	public void updateRemedy(@Valid RemedyUpdateData data) {
 		if (data.nome() != null) {
@@ -72,5 +75,14 @@ public class Remedy {
 		if (data.validade() != null) {
 			this.validade = data.validade();
 		}
+		
+		if (data.ativo() != null) {
+			this.ativo = data.ativo();
+		}
+	}
+
+	public void inativar() {
+		this.ativo = false;
+		
 	}
 }

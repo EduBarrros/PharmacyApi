@@ -3,7 +3,9 @@ package com.pharmacy.PharmacyApi.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,15 +36,27 @@ public class RemedyController {
 
 	@GetMapping
 	public List<RemedyListData> listRemedy() {
-		return repository.findAll().stream().map(RemedyListData::new).toList();
+		return repository.findAllByAtivoTrue().stream().map(RemedyListData::new).toList();
 	}
 
 	@PutMapping
 	@Transactional
 	public void updateRemedy(@RequestBody @Valid RemedyUpdateData data) {
 		var remedy = repository.getReferenceById(data.id());
-
 		remedy.updateRemedy(data);
 	}
-
+	
+	@DeleteMapping("/{id}")
+	@Transactional
+	public void deleteRemedy(@PathVariable Long id){
+		repository.deleteById(id);
+	}
+	
+	@DeleteMapping("/disable/{id}")
+	@Transactional
+	public void logicDeleteRemedy(@PathVariable Long id){
+		var remedy = repository.getReferenceById(id);
+		remedy.inativar();
+	}
+	
 }
