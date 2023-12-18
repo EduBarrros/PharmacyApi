@@ -17,7 +17,7 @@ public record RemedyRegisterData(
 
 		int quantidade,
 
-		@Future(message = "A data não pode ser retroativa!") LocalDate validade,
+		@Future(message = "A data de validade deve ser futura!") LocalDate validade,
 
 		@NotNull(message = "O laboratório informado é inválido!") @Enumerated Laboratorio laboratorio) {
 
