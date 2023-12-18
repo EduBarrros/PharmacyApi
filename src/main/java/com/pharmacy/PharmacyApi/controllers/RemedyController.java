@@ -43,6 +43,14 @@ public class RemedyController {
 		return ResponseEntity.created(uri).body(new RemedyDetails(remedy));
 	}
 
+	@GetMapping("/{id}")
+	public ResponseEntity<RemedyDetails> findRemedyById(@PathVariable Long id){
+
+		var remedy = repository.getReferenceById(id);
+
+		return ResponseEntity.ok(new RemedyDetails(remedy));
+	}
+
 	@GetMapping
 	public ResponseEntity<List<RemedyListData>> listRemedy() {
 		var list = repository.findAllByAtivoTrue().stream().map(RemedyListData::new).toList();
