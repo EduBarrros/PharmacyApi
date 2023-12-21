@@ -1,6 +1,9 @@
 package com.pharmacy.PharmacyApi.controllers;
 
+import com.pharmacy.PharmacyApi.infra.TokenData;
+import com.pharmacy.PharmacyApi.infra.TokenService;
 import com.pharmacy.PharmacyApi.user.AuthData;
+import com.pharmacy.PharmacyApi.user.User;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +21,9 @@ public class AuthController {
     @Autowired
     private AuthenticationManager manager;
 
+    @Autowired
+    private TokenService tokenService;
+
     @PostMapping
     public ResponseEntity<?> login(@RequestBody @Valid AuthData data){
 
@@ -25,7 +31,9 @@ public class AuthController {
 
         var auth = manager.authenticate(token);
 
-        return ResponseEntity.ok().build();
+        var tokenJWT = tokenService.GenerateToken((User) auth.getPrincipal());
+
+        return ResponseEntity.ok(new TokenData(tokenJWT));
     }
 
 }
