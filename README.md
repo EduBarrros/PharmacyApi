@@ -69,7 +69,7 @@ A API possui os seguintes endpoints:
 
 ### 1. Registro de Usuário
 
-- **URL:** `/auth`
+- **URL:** `/auth/register`
 - **Método:** `POST`
 - **Descrição:** Endpoint para registrar um novo usuário na API.
 - **Corpo da Requisição:**
