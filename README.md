@@ -69,7 +69,7 @@ A API possui os seguintes endpoints:
 
 ### 1. Registro de Usuário
 
-- **URL:** `/registro`
+- **URL:** `/auth`
 - **Método:** `POST`
 - **Descrição:** Endpoint para registrar um novo usuário na API.
 - **Corpo da Requisição:**
@@ -79,86 +79,19 @@ A API possui os seguintes endpoints:
     "password": "sua_senha"
   }
   ```
-- **Resposta de Sucesso:**
-  - Código: 200
-  - Conteúdo:
-    ```json
-    {
-      "mensagem": "Usuário registrado com sucesso!"
-    }
-    ```
 
-### 2. Operações CRUD para Farmácias
+#### 1.1 Realizar Login
 
-#### 2.1 Listar Todas as Farmácias
-
-- **URL:** `/farmacias`
-- **Método:** `GET`
-- **Descrição:** Retorna a lista de todas as farmácias cadastradas.
-
-#### 2.2 Obter Detalhes de uma Farmácia
-
-- **URL:** `/farmacias/{id}`
-- **Método:** `GET`
-- **Descrição:** Retorna os detalhes de uma farmácia específica com o ID fornecido.
-
-#### 2.3 Cadastrar uma Nova Farmácia
-
-- **URL:** `/farmacias`
-- **Método:** `POST`
-- **Descrição:** Cadastra uma nova farmácia.
+- **URL:** `/auth/login`
+- **Método:** `Post`
+- **Descrição:** Endpoint para logar um usuário na aplicação e receber um token.
 - **Corpo da Requisição:**
   ```json
   {
-    "nome": "Nome da Farmácia",
-    "endereco": "Endereço da Farmácia",
-    "telefone": "Número de Telefone"
+    "username": "seu_nome_de_usuario",
+    "password": "sua_senha"
   }
   ```
-- **Resposta de Sucesso:**
-  - Código: 201
-  - Conteúdo:
-    ```json
-    {
-      "mensagem": "Farmácia cadastrada com sucesso!"
-    }
-    ```
-
-#### 2.4 Atualizar uma Farmácia Existente
-
-- **URL:** `/farmacias/{id}`
-- **Método:** `PUT`
-- **Descrição:** Atualiza os detalhes de uma farmácia existente com o ID fornecido.
-- **Corpo da Requisição:**
-  ```json
-  {
-    "nome": "Novo Nome da Farmácia",
-    "endereco": "Novo Endereço da Farmácia",
-    "telefone": "Novo Número de Telefone"
-  }
-  ```
-- **Resposta de Sucesso:**
-  - Código: 200
-  - Conteúdo:
-    ```json
-    {
-      "mensagem": "Farmácia atualizada com sucesso!"
-    }
-    ```
-
-#### 2.5 Excluir uma Farmácia
-
-- **URL:** `/farmacias/{id}`
-- **Método:** `DELETE`
-- **Descrição:** Exclui uma farmácia existente com o ID fornecido.
-- **Resposta de Sucesso:**
-  - Código: 200
-  - Conteúdo:
-    ```json
-    {
-      "mensagem": "Farmácia excluída com sucesso!"
-    }
-    ```
 
 ## Contribuição
 
