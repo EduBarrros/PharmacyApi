@@ -1,6 +1,3 @@
-Claro, aqui está o conteúdo completo em formato Markdown:
-
-```markdown
 # PharmacyApi
 
 Bem-vindo ao repositório PharmacyApi! Este projeto é uma API REST desenvolvida com Spring Boot para gerenciar informações de farmácias.
@@ -100,4 +97,3 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir issues, enviar p
 ## Licença
 
 Este projeto está licenciado sob a [Licença MIT](LICENSE).
-```
