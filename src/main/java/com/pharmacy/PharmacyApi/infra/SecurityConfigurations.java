@@ -24,7 +24,7 @@ public class SecurityConfigurations {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http.authorizeHttpRequests(auth -> auth.requestMatchers(HttpMethod.POST, "/login").permitAll().anyRequest().authenticated()).csrf(AbstractHttpConfigurer::disable).sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class).build();
+        return http.authorizeHttpRequests(auth -> auth.requestMatchers("/auth/login", "/auth/register").permitAll().anyRequest().authenticated()).csrf(AbstractHttpConfigurer::disable).sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class).build();
     }
 
     @Bean
