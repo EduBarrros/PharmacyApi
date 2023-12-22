@@ -82,7 +82,7 @@ A API possui os seguintes endpoints:
 #### 1.2 Realizar Login
 
 - **URL:** `/auth/login`
-- **Método:** `Post`
+- **Método:** `POST`
 - **Descrição:** Endpoint para logar um usuário na aplicação e receber um token.
 - **Corpo da Requisição:**
   ```json
