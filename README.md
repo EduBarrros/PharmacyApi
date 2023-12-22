@@ -64,7 +64,9 @@ Bem-vindo ao repositório PharmacyApi! Este projeto é uma API REST desenvolvida
 
 A API possui os seguintes endpoints:
 
-#### 1. Registro de Usuário
+### 1. Rotas de criação e autenticação de usuário
+
+#### 1.1 Registro de Usuário
 
 - **URL:** `/auth/register`
 - **Método:** `POST`
@@ -77,7 +79,7 @@ A API possui os seguintes endpoints:
   }
   ```
 
-#### 1.1 Realizar Login
+#### 1.2 Realizar Login
 
 - **URL:** `/auth/login`
 - **Método:** `Post`
