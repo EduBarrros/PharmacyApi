@@ -31,9 +31,8 @@ Bem-vindo ao repositório PharmacyApi! Este projeto é uma API REST desenvolvida
    spring.datasource.url=jdbc:mysql://localhost:3306/seu_banco_de_dados
    spring.datasource.username=seu_usuario
    spring.datasource.password=sua_senha
-   spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-   spring.jpa.show-sql=true
-   spring.jpa.hibernate.ddl-auto=update
+   api.security.token.secret:sua_secret
+   server.error.include-stacktrace=never
    ```
 
    Substitua as informações do banco de dados conforme necessário.
@@ -61,6 +60,9 @@ Bem-vindo ao repositório PharmacyApi! Este projeto é uma API REST desenvolvida
    O aplicativo será iniciado em http://localhost:8080.
 
 ## Rotas da API
+
+> [!CAUTION]
+> ATENÇÃO: PARA O CONSUMO DAS APIS DE REMÉDIO É NECESSÁRIO PASSAR O TOKEN RETORNADO NO ENDPOINT DE LOGIN NO AUTH BEARER TOKEN DA REQUISIÇÃO
 
 A API possui os seguintes endpoints:
 
@@ -102,12 +104,12 @@ A API possui os seguintes endpoints:
 - **Corpo da Requisição:**
   ```json
   {
-  	 "nome": "nome_do_remedio",
-	 "via": "via_do_remedio",
-	 "lote": "lote_do_remedio",
-	 "quantidade": quantidade_do_remedio,
-	 "validade": "data_de_vencimento_do_remedio",
-	 "laboratorio": "laboratorio_do_remedio"
+    "nome": "nome_do_remedio",
+    "via": "via_do_remedio",
+    "lote": "lote_do_remedio",
+    "quantidade": "quantidade_do_remedio_inteiro",
+    "validade": "data_de_vencimento_do_remedio",
+    "laboratorio": "laboratorio_do_remedio"
   }
   ```
 
@@ -119,12 +121,12 @@ A API possui os seguintes endpoints:
 - **Corpo da Requisição:**
   ```json
   {
-  	 "nome": "nome_do_remedio",
-	 "via": "via_do_remedio",
-	 "lote": "lote_do_remedio",
-	 "quantidade": quantidade_do_remedio,
-	 "validade": "data_de_vencimento_do_remedio",
-	 "laboratorio": "laboratorio_do_remedio"
+    "nome": "nome_do_remedio",
+    "via": "via_do_remedio",
+    "lote": "lote_do_remedio",
+    "quantidade": "quantidade_do_remedio_inteiro",
+    "validade": "data_de_vencimento_do_remedio",
+    "laboratorio": "laboratorio_do_remedio"
   }
   ```
 
