@@ -92,6 +92,77 @@ A API possui os seguintes endpoints:
   }
   ```
 
+### 2. Rotas de registro, atualização, listagem, desativação/ativação e deleção de remédios.
+
+#### 2.1 Registro de remédio
+
+- **URL:** `/remedy`
+- **Método:** `POST`
+- **Descrição:** Endpoint para registrar um novo remédio.
+- **Corpo da Requisição:**
+  ```json
+  {
+  	 "nome": "nome_do_remedio",
+	 "via": "via_do_remedio",
+	 "lote": "lote_do_remedio",
+	 "quantidade": quantidade_do_remedio,
+	 "validade": "data_de_vencimento_do_remedio",
+	 "laboratorio": "laboratorio_do_remedio"
+  }
+  ```
+
+#### 2.2 Atualização de remédio
+
+- **URL:** `/remedy`
+- **Método:** `PUT`
+- **Descrição:** Endpoint para atualizar um remédio.
+- **Corpo da Requisição:**
+  ```json
+  {
+  	 "nome": "nome_do_remedio",
+	 "via": "via_do_remedio",
+	 "lote": "lote_do_remedio",
+	 "quantidade": quantidade_do_remedio,
+	 "validade": "data_de_vencimento_do_remedio",
+	 "laboratorio": "laboratorio_do_remedio"
+  }
+  ```
+
+#### 2.3 Listagem de remédio
+
+- **URL:** `/remedy`
+- **Método:** `GET`
+- **Descrição:** Endpoint para listar remédios.
+- 
+
+#### 2.4 Busca de remédio por Id
+
+- **URL:** `/remedy/{id}`
+- **Método:** `GET`
+- **Descrição:** Endpoint para listar remédios.
+- **Propriedade:** id do remédio.
+
+#### 2.5 Desativação de remédio por Id
+
+- **URL:** `/remedy/disable/{id}`
+- **Método:** `PUT`
+- **Descrição:** Endpoint para desativar remédio.
+- **Propriedade:** id do remédio.
+
+#### 2.6 Ativação de remédio por Id
+
+- **URL:** `/remedy/eneble/{id}`
+- **Método:** `PUT`
+- **Descrição:** Endpoint para ativar remédio.
+- **Propriedade:** id do remédio.
+
+#### 2.7 Deleção de remédio
+
+- **URL:** `/remedy/{id}`
+- **Método:** `DELETE`
+- **Descrição:** Endpoint para listar remédios.
+- **Propriedade:** id do remédio.
+
 ## Contribuição
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues, enviar pull requests ou fornecer feedback.
