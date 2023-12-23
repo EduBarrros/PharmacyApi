@@ -31,7 +31,7 @@ Bem-vindo ao repositório PharmacyApi! Este projeto é uma API REST desenvolvida
    spring.datasource.url=jdbc:mysql://localhost:3306/seu_banco_de_dados
    spring.datasource.username=seu_usuario
    spring.datasource.password=sua_senha
-   api.security.token.secret:sua_secret
+   api.security.token.secret=sua_secret
    server.error.include-stacktrace=never
    ```
 
